@@ -8,7 +8,8 @@ code, since version 1.0.0 completely rewritten from scratch on C++.
 
 ## Usage
 
-Bellow an example usage for a **2 core** system (see the `-t 2` parameter).
+Bellow an example usage for a **2 core** system (see the `-t 2` parameter) named
+**Miner01** (using the password field to set the miner name with `-p Miner01`).
 
 ```
 docker run --restart unless-stopped --name miner -d --read-only -m 50M -c 512 strm/xmrig \
