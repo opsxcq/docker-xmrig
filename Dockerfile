@@ -15,6 +15,7 @@ RUN apt-get update && \
 
 WORKDIR /src
 RUN git clone https://github.com/xmrig/xmrig.git && \
+    cd xmrig && \
     mkdir build && \
     cd build && \
     cmake .. && \
