@@ -12,6 +12,6 @@ Bellow an example usage for a **2 core** system (see the `-t 2` parameter).
 
 ```
 docker run --restart unless-stopped --name miner -d --read-only -m 50M -c 512 strm/xmrig \
-   -a cryptonight -o stratum+tcp://pool.supportxmr.com:5555 -p x -k -t 2 \
+   -a cryptonight -o stratum+tcp://pool.supportxmr.com:5555 -p Miner01 -k -t 2 \
    --donate-level=1 --cpu-priority 0 -u <Your Wallet Address>
 ```
