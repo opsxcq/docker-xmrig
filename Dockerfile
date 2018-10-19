@@ -11,6 +11,7 @@ RUN apt-get update && \
     build-essential \
     libuv1-dev \
     libmicrohttpd-dev \
+    libssl-dev \
     && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
