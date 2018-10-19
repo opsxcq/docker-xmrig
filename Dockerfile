@@ -4,6 +4,7 @@ LABEL maintainer "opsxcq@strm.sh"
 
 LABEL update "2018/10/18"
 
+WORKDIR /src
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     git \
@@ -13,18 +14,17 @@ RUN apt-get update && \
     libmicrohttpd-dev \
     libssl-dev \
     && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-WORKDIR /src
-RUN git clone https://github.com/xmrig/xmrig.git && \
+    git clone https://github.com/xmrig/xmrig.git && \
     cd xmrig && \
     mkdir build && \
     cd build && \
     cmake .. && \
     make && \
     cp xmrig /bin && \
-    rm -Rf /src
+    rm -Rf /src && \
+    apt-get purge git cmake build-essential && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN useradd --system --uid 666 -M --shell /usr/sbin/nologin miner
 USER miner
