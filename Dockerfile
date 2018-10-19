@@ -2,6 +2,8 @@ FROM debian:9.2
 
 LABEL maintainer "opsxcq@strm.sh"
 
+LABEL update "2018/10/18"
+
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     git \
