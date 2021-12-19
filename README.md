@@ -13,8 +13,10 @@ Bellow an example usage for a **2 core** system (see the `-t 2` parameter) named
 
 ```
 docker run --restart unless-stopped --name miner -d --read-only -m 50M -c 512 strm/xmrig \
-   -a cryptonight -o stratum+tcp://pool.supportxmr.com:5555 -p Miner01 -k -t 2 \
-   --donate-level=1 --cpu-priority 0 -u <Your Wallet Address>
+           --api-worker-id strm-monero-01 --http-host 0.0.0.0 --http-port 9901 \
+           --http-access-token SECRET --http-no-restricted -o pool.supportxmr.com:443 \
+           -u 89hN2EgDGhu3hq9KB5NyWr1Kpr7czdYF6Tzob1wpzwg4bkLNU9ubNFrLv65cmE249nGydESohbatFVJZDduT6x1LCBt1DYR \
+           -k --tls -p strm-worker-01
 ```
 
 ## JSON Configuration
@@ -22,3 +24,36 @@ docker run --restart unless-stopped --name miner -d --read-only -m 50M -c 512 st
 The preferable way to configure it is using a json, use [this
 website](https://xmrig.com/wizard#start) as a wizard to create your JSON
 configuration.
+
+```json
+{
+    "api": {
+        "worker-id": "strm-monero-01"
+    },
+    "http": {
+        "enabled": true,
+        "host": "0.0.0.0",
+        "port": 9901,
+        "access-token": "SECRET",
+        "restricted": false
+    },
+    "autosave": true,
+    "cpu": true,
+    "opencl": false,
+    "cuda": false,
+    "pools": [
+        {
+            "url": "pool.supportxmr.com:443",
+            "user": "89hN2EgDGhu3hq9KB5NyWr1Kpr7czdYF6Tzob1wpzwg4bkLNU9ubNFrLv65cmE249nGydESohbatFVJZDduT6x1LCBt1DYR",
+            "pass": "strm-worker-01",
+            "keepalive": true,
+            "tls": true
+        }
+    ]
+}
+```
+
+## Web interface for workers
+
+[The worker web interface](http://workers.xmrig.info/) can be accessed here and
+has an intuitive interface on how to add workers and monitor them.
