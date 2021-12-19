@@ -1,0 +1,6 @@
+variables:
+    PUBLIC_IMAGE: 'strm/xmrig'
+
+include:
+  - project: 'core/gitlabci-templates'
+    file: 'docker.yml'
