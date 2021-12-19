@@ -12,11 +12,11 @@ Bellow an example usage for a **2 core** system (see the `-t 2` parameter) named
 **strm-monero-01** (using the password field to set the miner name with `-p Miner01`).
 
 ```
-docker run --restart unless-stopped --name miner -d --read-only -p 9901:9901 -m 50M -c 512 strm/xmrig \
-           --api-worker-id strm-monero-01 --http-host 0.0.0.0 --http-port 9901 \
-           --http-access-token SECRET --http-no-restricted -o pool.supportxmr.com:443 \
+docker run --restart unless-stopped --name miner-monero -d --read-only -p 9901:9901 strm/xmrig \
+           --api-worker-id strm-miner-01 --http-host 0.0.0.0 --http-port 9901 --http-access-token SECRET \
+           --http-no-restricted -o pool.minexmr.com:443 \
            -u 89hN2EgDGhu3hq9KB5NyWr1Kpr7czdYF6Tzob1wpzwg4bkLNU9ubNFrLv65cmE249nGydESohbatFVJZDduT6x1LCBt1DYR \
-           -k --tls -p strm-worker-01
+           -k --tls --rig-id strm-worker-01
 ```
 
 ## JSON Configuration
@@ -28,7 +28,7 @@ configuration.
 ```json
 {
     "api": {
-        "worker-id": "strm-monero-01"
+        "worker-id": "strm-miner-01"
     },
     "http": {
         "enabled": true,
@@ -43,9 +43,9 @@ configuration.
     "cuda": false,
     "pools": [
         {
-            "url": "pool.supportxmr.com:443",
+            "url": "pool.minexmr.com:443",
             "user": "89hN2EgDGhu3hq9KB5NyWr1Kpr7czdYF6Tzob1wpzwg4bkLNU9ubNFrLv65cmE249nGydESohbatFVJZDduT6x1LCBt1DYR",
-            "pass": "strm-worker-01",
+            "rig-id": "strm-worker-01",
             "keepalive": true,
             "tls": true
         }
