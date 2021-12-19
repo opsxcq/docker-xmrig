@@ -9,10 +9,10 @@ code, since version 1.0.0 completely rewritten from scratch on C++.
 ## Usage
 
 Bellow an example usage for a **2 core** system (see the `-t 2` parameter) named
-**Miner01** (using the password field to set the miner name with `-p Miner01`).
+**strm-monero-01** (using the password field to set the miner name with `-p Miner01`).
 
 ```
-docker run --restart unless-stopped --name miner -d --read-only -m 50M -c 512 strm/xmrig \
+docker run --restart unless-stopped --name miner -d --read-only -p 9901:9901 -m 50M -c 512 strm/xmrig \
            --api-worker-id strm-monero-01 --http-host 0.0.0.0 --http-port 9901 \
            --http-access-token SECRET --http-no-restricted -o pool.supportxmr.com:443 \
            -u 89hN2EgDGhu3hq9KB5NyWr1Kpr7czdYF6Tzob1wpzwg4bkLNU9ubNFrLv65cmE249nGydESohbatFVJZDduT6x1LCBt1DYR \
